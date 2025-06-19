@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time AQI - EcoGuardian</title>
+    <link rel="stylesheet" href="styleaqi.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script defer src="aqi.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Real-Time Air Quality Index</h1>
+        <p>Monitor pollution levels across India</p>
+    </header>
+
+    <!-- AQI Legend in red-marked area (moved above main section) -->
+    <div class="legend-top">
+        <div class="aqi-legend">
+            <h3>Air Quality Index Levels</h3>
+            <div class="aqi-level good">0–50: Good</div>
+            <div class="aqi-level moderate">51–100: Moderate</div>
+            <div class="aqi-level usg">101–150: Unhealthy for Sensitive Groups</div>
+            <div class="aqi-level unhealthy">151–200: Unhealthy</div>
+            <div class="aqi-level very-unhealthy">201–300: Very Unhealthy</div>
+            <div class="aqi-level hazardous">301+: Hazardous</div>
+        </div>
+    </div>
+
+    <div class="aqi-container">
+        <!-- Visakhapatnam AQI Section -->
+        <div class="vizag-section">
+            <h2>Visakhapatnam AQI</h2>
+            <div class="aqi-box">
+                <h3 id="vizag-aqi">Loading...</h3>
+                <p>PM2.5: <span id="pm25">--</span> µg/m³</p>
+                <p>PM10: <span id="pm10">--</span> µg/m³</p>
+                <p>O3: <span id="o3">--</span> µg/m³</p>
+                <p>NO2: <span id="no2">--</span> µg/m³</p>
+                <p>SO2: <span id="so2">--</span> µg/m³</p>
+                <p>CO: <span id="co">--</span> µg/m³</p>
+            </div>
+        </div>
+
+        <!-- India AQI Map -->
+        <div class="india-map">
+            <h2>India AQI Map</h2>
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <footer>
+        <p>&copy; 2025 EcoGuardian. All rights reserved.</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        <p>Contact us: <a href="mailto:info@ecoguardian.com">info@ecoguardian.com</a></p>
+    </footer>
+</body>
+</html>

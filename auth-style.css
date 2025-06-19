@@ -1,0 +1,131 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #B7EFC5, #B7EFC5);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-container {
+    background: #fff;
+    padding: 2rem 3rem;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.auth-container h2 {
+    color: #4AD66D;
+    margin-bottom: 1.5rem;
+}
+
+.input-group {
+    position: relative;
+    margin: 1.5rem 0;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px 10px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    font-size: 1rem;
+    background: transparent;
+    transition: 0.3s ease;
+}
+
+.input-group label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    pointer-events: none;
+    color: #666;
+    transition: 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group input:valid {
+    border-bottom: 2px solid #4AD66D;
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+    top: -10px;
+    font-size: 0.8rem;
+    color: #4AD66D;
+}
+
+.auth-btn {
+    background-color: #4AD66D;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.auth-btn:hover {
+    background-color: #4AD66D;
+}
+
+.switch-link {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+.switch-link a {
+    color: #4AD66D;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.switch-link a:hover {
+    text-decoration: underline;
+}
+#success-msg {
+    background-color: #dff0d8;
+    color: #2e654b;
+    padding: 12px 20px;
+    border-left: 6px solid #3D8D7A;
+    border-radius: 5px;
+    font-weight: 500;
+    margin: 15px auto;
+    text-align: center;
+    max-width: 400px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.hidden {
+    display: none;
+}
+footer {
+    background: #333; /* Dark background for the footer */
+    color: #f0f0f0; /* Light text color */
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px; /* Add some space above the footer */
+    border-radius: 10px 10px 0 0; /* Optional: Rounded top corners */
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: #4AD66D; /* Green link color */
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}

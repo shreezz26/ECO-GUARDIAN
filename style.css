@@ -1,0 +1,286 @@
+/* General Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Arial", sans-serif;
+}
+
+body {
+    background: #B7EFC5;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Header */
+header {
+    background: #4AD66D;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+    font-size: 32px;
+}
+
+header p {
+    font-size: 18px;
+    font-weight: lighter;
+}
+
+/* Container for Cards */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Cards */
+.card {
+    background: white;
+    color: #4AD66D;
+    text-align: center;
+    width: 280px;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 15px;
+    text-decoration: none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card:hover {
+    background: #4AD66D;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Animated Icons */
+.animated-icon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 10px;
+}
+
+/* Buttons */
+.button {
+    display: inline-block;
+    padding: 12px 20px;
+    margin-top: 15px;
+    background: #4AD66D;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.button:hover {
+    background: #38b556;
+    transform: scale(1.05);
+}
+
+/* Report Page Styling */
+.report-container {
+    background: white;
+    padding: 25px;
+    max-width: 500px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.report-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.report-container label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: left;
+}
+
+.report-container input,
+.report-container select,
+.report-container textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
+
+.report-container textarea {
+    height: 100px;
+    resize: none;
+}
+
+/* File Upload Styling */
+.report-container input[type="file"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+    cursor: pointer;
+}
+
+/* Rewards Page Styling */
+.rewards-container {
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Eco Points Box */
+.eco-points {
+    background: #B7EFC5;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.eco-points h2 {
+    font-size: 24px;
+    color: #333;
+}
+
+.eco-points p {
+    font-size: 28px;
+    font-weight: bold;
+    color: #4AD66D;
+}
+
+/* Rewards Grid */
+.reward-icon {
+    width: 70px; /* Adjust size to be visually balanced */
+    height: 70px;
+    display: block;
+    margin: 10px auto; /* Center the icons inside the reward cards */
+    animation: bounce 1.5s infinite alternate; /* Subtle animation */
+}
+.main-footer {
+    background: #4AD66D; /* Dark background for the footer */
+    color: #f0f0f0; /* Light text color */
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px; /* Add some space above the footer */
+    border-radius: 10px 10px 0 0; /* Optional: Rounded top corners */
+}
+
+.main-footer p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+.main-footer a {
+    color: #f0f0f0; /* Green link color */
+    text-decoration: none;
+}
+
+.main-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Keyframes for gentle bounce effect */
+@keyframes bounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-5px);
+    }
+}
+
+.rewards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.reward-card {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.reward-card:hover {
+    transform: scale(1.05);
+}
+
+.reward-card img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.reward-card h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.reward-card p {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+    .rewards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 28px;
+    }
+
+    header p {
+        font-size: 16px;
+    }
+
+    .card {
+        font-size: 18px;
+        padding: 15px;
+    }
+
+    .reward-card img {
+        width: 60px;
+        height: 60px;
+    }
+}
+

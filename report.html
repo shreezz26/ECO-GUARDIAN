@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report an Issue</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+    <style>
+        #map {
+            height: 300px;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 999;
+            left: 0; top: 0;
+            width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        .modal-buttons {
+            margin-top: 20px;
+        }
+
+        .modal-buttons button {
+            padding: 8px 16px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .confirm-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .cancel-btn {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Report an Environmental Issue</h1>
+        <p>Help us keep the environment clean</p>
+    </header>
+
+    <div class="report-container">
+        <form id="reportForm" method="post" action="submit_report.php" enctype="multipart/form-data">
+            <label for="issue">Issue Type:</label>
+            <select id="issue" name="issue">
+                <option value="waste">Waste Disposal</option>
+                <option value="pollution">Water Pollution</option>
+                <option value="air">Air Pollution</option>
+            </select>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" rows="4"></textarea>
+
+            <label for="photo">Upload Photo:</label>
+            <input type="file" id="photo" name="photo" accept="image/*">
+
+            <!-- Hidden location fields -->
+            <input type="hidden" name="latitude" id="latitude">
+            <input type="hidden" name="longitude" id="longitude">
+
+            <!-- Location status -->
+            <p id="location-status" style="margin: 10px 0; color: green;"></p>
+
+            <!-- Editable Map -->
+            <div id="map"></div>
+
+            <button type="button" class="button" onclick="showModal()">Submit Report</button>
+        </form>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <h3>Confirm Submission</h3>
+            <p>Are you sure you want to submit this report?</p>
+            <div class="modal-buttons">
+                <button class="confirm-btn" onclick="submitForm()">Yes, Submit</button>
+                <button class="cancel-btn" onclick="hideModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+    <script>
+        let map, marker;
+
+        window.onload = function () {
+            const status = document.getElementById('location-status');
+
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    position => {
+                        const lat = position.coords.latitude;
+                        const lng = position.coords.longitude;
+
+                        initMap(lat, lng);
+                        status.textContent = "Location captured. You can drag the marker to adjust it.";
+                        status.style.color = "green";
+                    },
+                    () => {
+                        const defaultLat = 20.5937; // India center fallback
+                        const defaultLng = 78.9629;
+                        initMap(defaultLat, defaultLng);
+                        status.textContent = "Unable to retrieve location. Please adjust manually.";
+                        status.style.color = "red";
+                    }
+                );
+            } else {
+                const defaultLat = 20.5937;
+                const defaultLng = 78.9629;
+                initMap(defaultLat, defaultLng);
+                status.textContent = "Geolocation not supported. Please adjust location manually.";
+                status.style.color = "red";
+            }
+        };
+
+        function initMap(lat, lng) {
+            document.getElementById('latitude').value = lat;
+            document.getElementById('longitude').value = lng;
+
+            map = L.map('map').setView([lat, lng], 15);
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+
+            marker = L.marker([lat, lng], { draggable: true }).addTo(map)
+                .bindPopup("Drag me to adjust location").openPopup();
+
+            marker.on('dragend', function (e) {
+                const newLatLng = marker.getLatLng();
+                document.getElementById('latitude').value = newLatLng.lat;
+                document.getElementById('longitude').value = newLatLng.lng;
+            });
+        }
+
+        function showModal() {
+            document.getElementById("confirmModal").style.display = "block";
+        }
+
+        function hideModal() {
+            document.getElementById("confirmModal").style.display = "none";
+        }
+
+        function submitForm() {
+            hideModal();
+            document.getElementById("reportForm").submit();
+        }
+    </script>
+</body>
+</html>

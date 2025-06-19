@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EcoGuardian Login</title>
+    <link rel="stylesheet" href="auth-style.css">
+</head>
+<body>
+    <div class="auth-container">
+        <h2>Welcome Back</h2>
+        <div id="success-msg" class="hidden">Registration successful. Please log in now.</div>
+
+        <form action="login.php" method="POST">
+            <div class="input-group">
+                <input type="text" name="identifier" required>
+                <label>Username or Email</label>
+            </div>
+            <div class="input-group">
+                <input type="password" name="password" required>
+                <label>Password</label>
+            </div>
+            <button type="submit" class="auth-btn">Login</button>
+            <p class="switch-link">Don't have an account? <a href="register.html">Register here</a></p>
+        </form>
+    </div>
+    <script>
+        // Check if the user came from registration
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('registered') === 'success') {
+            const msg = document.getElementById('success-msg');
+            msg.classList.remove('hidden');
+        }
+        setTimeout(() => {
+            const msg = document.getElementById('success-msg');
+            if (msg) msg.style.display = 'none';
+        }, 5000);
+        
+    </script>
+    
+</body>
+</html>

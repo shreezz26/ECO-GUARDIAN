@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community - EcoGuardian</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: #B7EFC5; /* Light green background */
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        header {
+            background: #4AD66D; /* Vibrant green header */
+            color: white;
+            padding: 25px 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+            text-align: center;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        header h1 {
+            font-size: 38px;
+            letter-spacing: 1.5px;
+            margin-bottom: 5px;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+            width: 90%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px; /* Spacing between sections */
+        }
+
+        h2 {
+            color: #3D8D7A; /* Deeper green subheading */
+            font-size: 34px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        /* Events Section */
+        .events-section {
+            padding: 25px;
+            border-radius: 12px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .event-item {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .event-details {
+            flex-grow: 1;
+        }
+
+        .event-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #2E8B57; /* Sea green for event title */
+            margin-bottom: 8px;
+        }
+
+        .event-meta {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .participate-button {
+            background-color: #4AD66D; /* Green button */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .participate-button:hover {
+            background-color: #3D8D7A; /* Darker green on hover */
+        }
+
+        /* Future Posts/Discussions Section (Placeholder) */
+        .discussions-section {
+            padding: 25px;
+            border-radius: 12px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: #777;
+            font-style: italic;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-input-group {
+            margin-bottom: 15px;
+        }
+
+        .modal-input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .modal-input-group input[type=text],
+        .modal-input-group input[type=email],
+        .modal-input-group input[type=tel] {
+            width: calc(100% - 12px);
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .modal-actions {
+            text-align: right;
+        }
+
+        .modal-actions button {
+            background-color: #4AD66D; /* Green button */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.2s ease-in-out;
+            margin-left: 10px;
+        }
+
+        .modal-actions button:hover {
+            background-color: #3D8D7A; /* Darker green on hover */
+        }
+
+        .modal-actions button.cancel-button {
+            background-color: #f44336; /* Red cancel button */
+        }
+
+        .modal-actions button.cancel-button:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Community</h1>
+    </header>
+
+    <div class="container">
+        <section class="events-section">
+            <h2>Upcoming Events</h2>
+            <ul class="event-list">
+                <li class="event-item" data-event-id="1">
+                    <div class="event-details">
+                        <h3 class="event-title">Beach Cleanup Drive</h3>
+                        <p class="event-meta">Date: April 27, 2025 | Time: 9:00 AM - 12:00 PM | Location: RK Beach</p>
+                        <p>Join us in cleaning up our beautiful RK Beach and making a difference!</p>
+                    </div>
+                    <button class="participate-button" onclick="openParticipationModal(1)">Participate</button>
+                </li>
+                <li class="event-item" data-event-id="2">
+                    <div class="event-details">
+                        <h3 class="event-title">Tree Planting Initiative</h3>
+                        <p class="event-meta">Date: May 5, 2025 | Time: 10:00 AM - 1:00 PM | Location: Indira Gandhi Zoological Park</p>
+                        <p>Help us plant new saplings and contribute to a greener Visakhapatnam.</p>
+                    </div>
+                    <button class="participate-button" onclick="openParticipationModal(2)">Participate</button>
+                </li>
+                <li class="event-item" data-event-id="3">
+                    <div class="event-details">
+                        <h3 class="event-title">Recycling Workshop</h3>
+                        <p class="event-meta">Date: May 12, 2025 | Time: 2:00 PM - 4:00 PM | Location: Community Hall, Sector 5</p>
+                        <p>Learn effective recycling techniques and how to reduce waste in your daily life.</p>
+                    </div>
+                    <button class="participate-button" onclick="openParticipationModal(3)">Participate</button>
+                </li>
+            </ul>
+            <p class="event-list-empty hidden">No upcoming events at the moment.</p>
+        </section>
+
+        <section class="discussions-section">
+            <h2>Community Discussions</h2>
+            <p>Coming soon! A space to share your thoughts, ideas, and connect with other EcoGuardians.</p>
+        </section>
+
+        <div id="participationModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button" onclick="closeParticipationModal()">&times;</span>
+                <h2>Participate in Event</h2>
+                <form id="participationForm">
+                    <div class="modal-input-group">
+                        <label for="name">Your Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="modal-input-group">
+                        <label for="email">Your Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="modal-input-group">
+                        <label for="phone">Your Phone Number:</label>
+                        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" placeholder="10-digit number" required>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="cancel-button" onclick="closeParticipationModal()">Cancel</button>
+                        <button type="button" onclick="submitParticipation()">Submit</button>
+                    </div>
+                    <input type="hidden" id="eventId" name="event_id">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const participationModal = document.getElementById('participationModal');
+        let currentEventId;
+
+        function openParticipationModal(eventId) {
+            currentEventId = eventId;
+            document.getElementById('eventId').value = eventId;
+            participationModal.style.display = "block";
+        }
+
+        function closeParticipationModal() {
+            participationModal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == participationModal) {
+                closeParticipationModal();
+            }
+        }
+
+        function submitParticipation() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const eventId = document.getElementById('eventId').value;
+
+            // Basic client-side validation
+            if (!name || !email || !phone || !/^[0-9]{10}$/.test(phone)) {
+                alert('Please enter your name, a valid email, and a 10-digit phone number.');
+                return;
+            }
+
+            // Send data to the backend using fetch
+            fetch('participate_event.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `event_id=${eventId}&name=${name}&email=${email}&phone=${phone}`
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data); // Show success or error message from PHP
+                closeParticipationModal();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while trying to participate.');
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EcoGuardian Register</title>
+    <link rel="stylesheet" href="auth-style.css">
+</head>
+<body>
+    <div class="auth-container">
+        <h2>Create Your Account</h2>
+
+        <!-- Error message for duplicates -->
+        <div id="error-msg" class="hidden">Email or Contact Number already exists. Please use different details.</div>
+        
+        <form action="register.php" method="POST">
+            <div class="input-group">
+                <input type="text" name="name" required>
+                <label>Name</label>
+            </div>
+            <div class="input-group">
+                <input type="email" name="email" required>
+                <label>Email</label>
+            </div>
+            <div class="input-group">
+                <input type="text" name="contact_number" required>
+                <label>Contact Number</label>
+            </div>
+            <div class="input-group">
+                <input type="password" name="password" required>
+                <label>Password</label>
+            </div>
+            <button type="submit" class="auth-btn">Register</button>
+            <p class="switch-link">Already have an account? <a href="login.html">Login here</a></p>
+        </form>
+    </div>
+
+    <script>
+        // Show error message if redirected due to duplicate
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('error') === 'exists') {
+            document.getElementById('error-msg').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Points & Rewards</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Existing styles remain the same, you might need to add some for new elements if needed */
+        .rewards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Explicitly create 3 equal columns */
+            gap: 20px;
+        }
+
+        .reward-card {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .reward-icon {
+            max-width: 80px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .button {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Eco Points & Rewards</h1>
+    </header>
+
+    <div class="rewards-container">
+        <div class="eco-points">
+            <h2>Your Eco Points</h2>
+            <p><span id="user-points">500</span> Points</p>
+        </div>
+
+        <h2>Available Rewards</h2>
+        <div class="rewards-grid">
+            <div class="reward-card">
+                <img src="images/discount.gif" alt="Discount" class="reward-icon">
+                <h3>Discount Coupon</h3>
+                <button class="button" onclick="redeemReward('discount', 200)">200 Points</button>
+            </div>
+
+            <div class="reward-card">
+                <img src="images/certificate.gif" alt="Certificate" class="reward-icon">
+                <h3>Eco Champion Certificate</h3>
+                <button class="button" onclick="redeemReward('certificate', 300)">300 Points</button>
+            </div>
+
+            <div class="reward-card">
+                <img src="images/plant.gif" alt="Tree" class="reward-icon">
+                <h3>Plant a Tree</h3>
+                <button class="button" onclick="redeemReward('plant', 400)">400 Points</button>
+            </div>
+
+            <div class="reward-card">
+                <img src="images/bus.gif" alt="APSRTC Discount" class="reward-icon">
+                <h3>APSRTC Bus Ticket Discount (10%)</h3>
+                <button class="button" onclick="redeemReward('apsrtc_discount', 250)">250 Points</button>
+            </div>
+
+
+            <div class="reward-card">
+                <img src="images/hotel.gif" alt="AP Tourism Hotel" class="reward-icon">
+                <h3>AP Tourism Hotel Discount (15%)</h3>
+                <button class="button" onclick="redeemReward('aptdc_hotel', 400)">400 Points</button>
+            </div>
+
+            <div class="reward-card">
+                <img src="images/restaurant.gif" alt="AP Tourism Restaurant" class="reward-icon">
+                <h3>AP Tourism Restaurant ₹100 Off</h3>
+                <button class="button" onclick="redeemReward('aptdc_restaurant', 300)">300 Points</button>
+            </div>
+
+            <div class="reward-card">
+                <img src="images/badge.gif" alt="Redeem Badge" class="reward-icon">
+                <h3>Redeemable Badge</h3>
+                <button class="button" onclick="redeemReward('badge', 500)">500 Points</button>
+            </div>
+
+            <div class="reward-card">
+                <img src="images/donation.gif" alt="Donation" class="reward-icon">
+                <h3>Donate Eco Points</h3>
+                <button class="button" onclick="redeemReward('donate', 600)">600 Points</button>
+            </div>
+
+            <div class="reward-card">
+                <img src="images/share.gif" alt="Social Share" class="reward-icon">
+                <h3>Social Sharing Bonus</h3>
+                <button class="button" onclick="redeemReward('share', 100)">100 Points</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function redeemReward(rewardType, cost) {
+            let userPoints = parseInt(document.getElementById("user-points").textContent);
+            if (userPoints >= cost) {
+                userPoints -= cost;
+                document.getElementById("user-points").textContent = userPoints;
+                alert(`You have redeemed the ${getRewardName(rewardType)} successfully.`);
+                // In a real application, you would trigger different actions
+                // based on the rewardType (e.g., show a coupon code,
+                // initiate a donation process, etc.).
+                handleRewardRedemption(rewardType);
+            } else {
+                alert("Not enough points.");
+            }
+        }
+
+        function getRewardName(type) {
+            switch (type) {
+                case 'discount':
+                    return 'Discount Coupon';
+                case 'certificate':
+                    return 'Eco Champion Certificate';
+                case 'plant':
+                    return 'Plant a Tree';
+                case 'apsrtc_discount':
+                    return 'APSRTC Bus Ticket Discount (10%)';
+                case 'apsrtc_off':
+                    return 'APSRTC Rajdhani ₹50 Off';
+                case 'aptdc_hotel':
+                    return 'AP Tourism Hotel Discount (15%)';
+                case 'aptdc_restaurant':
+                    return 'AP Tourism Restaurant ₹100 Off';
+                case 'badge':
+                    return 'Redeemable Badge';
+                case 'donate':
+                    return 'Donation';
+                case 'share':
+                    return 'Social Sharing Bonus';
+                default:
+                    return 'Reward';
+            }
+        }
+
+        function handleRewardRedemption(rewardType) {
+            switch (rewardType) {
+                case 'discount':
+                    alert('Here is your discount coupon code: ECOFRIEND15'); // Replace with actual logic
+                    break;
+                case 'certificate':
+                    alert('Your Eco Champion Certificate has been sent to your email.'); // Replace with actual logic
+                    break;
+                case 'plant':
+                    alert('Thank you for contributing to planting a tree!'); // Replace with actual logic
+                    // You might want to track this in the backend
+                    break;
+                case 'apsrtc_discount':
+                    alert('You have received a 10% discount code for APSRTC: APSRTC10'); // Replace with actual logic
+                    // Provide instructions on how to use it
+                    break;
+                case 'apsrtc_off':
+                    alert('You have received a ₹50 off code for APSRTC Rajdhani: RAJDHANI50'); // Replace with actual logic
+                    // Provide instructions on how to use it
+                    break;
+                case 'aptdc_hotel':
+                    alert('You have received a 15% discount code for AP Tourism Hotels: APTHOTEL15'); // Replace with actual logic
+                    // Provide instructions on how to use it
+                    break;
+                case 'aptdc_restaurant':
+                    alert('Show this code at participating AP Tourism restaurants to get ₹100 off: APTREST100'); // Replace with actual logic
+                    break;
+                case 'badge':
+                    alert('Congratulations! The "Eco Enthusiast" badge has been added to your profile.'); // Replace with actual logic
+                    // You would update the user's profile in the backend
+                    break;
+                case 'donate':
+                    alert('Your points have been donated to our environmental partner. Thank you!'); // Replace with actual logic
+                    // You would handle the donation in the backend
+                    break;
+                case 'share':
+                    alert('Thank you for sharing! 100 bonus points have been added to your account.'); // Replace with actual logic
+                    // You would need to implement actual social sharing functionality
+                    // and the logic to award points after sharing (which is complex on the frontend alone)
+                    document.getElementById("user-points").textContent = parseInt(document.getElementById("user-points").textContent) + 100;
+                    break;
+                default:
+                    alert('Reward redeemed.');
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

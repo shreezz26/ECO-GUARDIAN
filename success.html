@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Redirecting...</title>
+  <link rel="stylesheet" href="auth-style.css" />
+  <style>
+    .success-box {
+      text-align: center;
+      background-color: #ffffff;
+      padding: 3rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    .success-box h2 {
+      color: #4AD66D;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .checkmark {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1rem auto;
+    }
+
+    .checkmark circle {
+      fill: none;
+      stroke: #B7EFC5;
+      stroke-width: 5;
+      animation: circle-appear 0.6s ease forwards;
+    }
+
+    .checkmark path {
+      stroke: #4AD66D;
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      stroke-dasharray: 48;
+      stroke-dashoffset: 48;
+      animation: checkmark-draw 0.5s 0.6s ease forwards;
+    }
+
+    @keyframes circle-appear {
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes checkmark-draw {
+      to { stroke-dashoffset: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-container">
+    <div class="success-box">
+      <svg class="checkmark" viewBox="0 0 52 52">
+        <circle cx="26" cy="26" r="25" stroke-dasharray="157" stroke-dashoffset="157"/>
+        <path d="M14 27l8 8 16-16"/>
+      </svg>
+      <h2>Login Successful</h2>
+      <p>Redirecting you to EcoGuardian...</p>
+    </div>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 2500);
+  </script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: #B7EFC5;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        header {
+            background: #4AD66D;
+            color: white;
+            padding: 25px 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+            text-align: center;
+            width: 90%;
+            max-width: 700px;
+        }
+
+        header h1 {
+            font-size: 38px;
+            letter-spacing: 1.5px;
+            margin-bottom: 5px;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+            width: 90%;
+            max-width: 700px;
+        }
+
+        h2 {
+            color: #3D8D7A;
+            margin-bottom: 35px;
+            font-size: 34px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .leaderboard-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+
+        .leaderboard-item {
+            background-color: #f9f9f9;
+            padding: 20px 25px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: space-between; /* Keep space between name and points */
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border-left: 8px solid transparent;
+        }
+
+        .leaderboard-item:hover {
+            transform: scale(1.015);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background-color: #f0f8f4;
+        }
+
+        .leaderboard-item span {
+            font-weight: bold;
+            color: #444;
+            font-size: 18px;
+        }
+
+        .leaderboard-item span:first-child {
+            color: #2E8B57; /* Sea green for rank/name */
+            flex-grow: 1; /* Allow name to take up more space */
+            margin-right: 20px; /* Add some spacing between name and points */
+            min-width: 150px; /* Ensure a minimum width for the name */
+        }
+
+        .leaderboard-empty {
+            text-align: center;
+            font-style: italic;
+            color: #888;
+            margin-top: 30px;
+            font-size: 16px;
+        }
+
+        /* Visual emphasis for top 3 */
+        .leaderboard-item:nth-child(1) {
+            border-left-color: #FFD700;
+            box-shadow: 0 6px 12px rgba(255, 215, 0, 0.3);
+        }
+
+        .leaderboard-item:nth-child(2) {
+            border-left-color: #C0C0C0;
+            box-shadow: 0 6px 12px rgba(192, 192, 192, 0.3);
+        }
+
+        .leaderboard-item:nth-child(3) {
+            border-left-color: #CD7F32;
+            box-shadow: 0 6px 12px rgba(205, 127, 50, 0.3);
+        }
+
+        /* Subtle background gradient */
+        .container {
+            background: linear-gradient(145deg, #ffffff 60%, #f0f8f4 100%);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Leaderboard</h1>
+    </header>
+
+    <div class="container">
+        <h2>Top Eco Points Earners</h2>
+
+        <ul class="leaderboard-list">
+            <li class="leaderboard-item">
+                <span>1. Alice</span>
+                <span>1250 Points</span>
+            </li>
+            <li class="leaderboard-item">
+                <span>2. Bob</span>
+                <span>1100 Points</span>
+            </li>
+            <li class="leaderboard-item">
+                <span>3. Charlie</span>
+                <span>980 Points</span>
+            </li>
+            <li class="leaderboard-item">
+                <span>4. David</span>
+                <span>875 Points</span>
+            </li>
+            <li class="leaderboard-item">
+                <span>5. Eve</span>
+                <span>760 Points</span>
+            </li>
+            <li class="leaderboard-item">
+                <span>6. Fiona</span>
+                <span>700 Points</span>
+            </li>
+            <li class="leaderboard-item">
+                <span>7. George</span>
+                <span>650 Points</span>
+            </li>
+            <li class="leaderboard-item">
+                <span>8. Hannah</span>
+                <span>600 Points</span>
+            </li>
+            <li class="leaderboard-item">
+                <span>9. Ian</span>
+                <span>550 Points</span>
+            </li>
+            <li class="leaderboard-item">
+                <span>10. Jane</span>
+                <span>500 Points</span>
+            </li>
+        </ul>
+
+        
+    </div>
+</body>
+</html>
